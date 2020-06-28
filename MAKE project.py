@@ -46,6 +46,41 @@ def createCharacter(character, type):
         choice = input()
     choosePowers(character, choice)
 
+def checkDoor():
+    print('It\'s your job to meet with the villain..')
+    time.sleep(2)
+    print('They\'ve invited you to their lair...')
+    time.sleep(2)
+    print('And now it\'s time to earn your chance to fight..')
+    time.sleep(2)
+
+def guessJoke():
+    print('Here is the joke..')
+    url = f'https://official-joke-api.appspot.com/random_joke' # Random Joke API url
+    response = requests.get(url) # Receiving your request from the API
+    response.raise_for_status() # Check for errors
+
+    jokeData = json.loads(response.text)
+    #pprint.pprint(jokeData) # Organizes JSON data output #this actually prints all of the data
+
+    content = jokeData['setup'] # Pulling only the setup for the joke from the result
+    print(content) # Print setup
+    myResults.append(content) # Adding results to myResults list
+
+    print('Type in your guess.')
+    guess = input()
+    content2 = jokeData['punchline']  # Pulling only the setup for the joke from the result
+    if(guess == content2):
+        print('You were correct! Great guess!')
+        return True
+        myResults.append(content2)  # Adding results to myResults list
+    else:
+        print('You tried! The real answer was: ' + content2)
+        return False
+        myResults.append(content2)  # Adding results to myResults list
+    #print(content2)  # Print setup
+
+
 while True:
     print('''Welcome to Heroes Online, an interactive game where you get to create your own
 character based on one of four types of super powers: fire, air, water, and earth.
@@ -67,7 +102,7 @@ Fire (f), water (w), earth (e) or air (a)?''')
     time.sleep(2)
     print('''Your name is ''' + charName + ''' and you are a super hero with ''' + player.type +
           ''' powers. These powers include ''' + player.powers[0] + ', ' +  player.powers[1] + ', ' + player.powers[2] +
-          '''. 
+          '''.
 You live in what used to be Boca Raton, Florida. But now, it is overtaken with distress and demolition. The source is
 villains who have taken over 7 various environmental locations around the world. It is up to
 you to decide where to strike first. Here are the options:
@@ -92,51 +127,34 @@ you to decide where to strike first. Here are the options:
            7.) The Gobi Desert, Southern Mongolia''')
     if(choice == '1'):
         print('Welcome to Sydney. The beach has been destroyed by a villain, named Alastor, who\'s primary powers are mind-control and shape-shifting.')
-    if(choice == '2'):
+    elif(choice == '2'):
         print('Welcome to Madagascar. Most of the animals & trees in the Rainforest have died because of a villain named Odon, for his powers include acid/poison and electricity')
-    if(choice == '3'):
+    elif(choice == '3'):
         print('Welcome to Senegal. The port has been transformed into the villain, Zilla\'s lair, and his powers include flight and speed.')
-    if(choice == '4'):
+    elif(choice == '4'):
         print('Welcome to Argentina. The Glacier has almost melted away because of the villain, Kasdeya, and her powers include superstrength and energy.')
-    if(choice == '5'):
+    elif(choice == '5'):
         print('Welcome to Paris. The Eifel Tower is one of the last monuments left standing in Paris because of the villain, Thamish, and his powers include forcefields and invisibility.')
-    if(choice == '6'):
+    elif(choice == '6'):
         print('Welcome to Ecuador. The islands have almost diminished because of the villain, Daegal, and his powers include gravity and super-intelligence,')
-    if(choice == '7'):
-        print('Welcome to the Gobi Desert. The Desert has been reaching deathly temperatures becaue of the villain, Horay, and his powers include illusions and radiation.')
-    if(choice == '1' or choice == '2' or choice == '3' or choice == '4' or choice == '5' or choice == '6' or choice == '7'):
-
-#def checkDoor():
-        print('It\'s your job to meet with the villain..')
-        time.sleep(2)
-        print('They\'ve invited you to their lair..)
-        time.sleep(2)
-        print('And now it\'s time to earn your chance to fight..')
-        time.sleep(2)
-
-
-print('Guess the joke correctly and you\'ll be allowed in. Would you like to continue? (y or n)'
-choice = input()
-
-#def guessJoke():
-if choice == 'y':
-    print('Here is the joke..')
-    url = f'https://official-joke-api.appspot.com/random_joke' # Random Joke API url
-    response = requests.get(url) # Receiving your request from the API
-    response.raise_for_status() # Check for errors
-
-    jokeData = json.loads(response.text)
-    pprint.pprint(jokeData) # Organizes JSON data output
-
-    content = jokeData['setup'] # Pulling only the setup for the joke from the result
-    print(content) # Print setup
-    myResults.append(content) # Adding results to myResults list
-
-    print('Type in your guess.')
-    guess = input()
-    content2 = jokeData['punchline']  # Pulling only the setup for the joke from the result
-    print(content2)  # Print setup
-    myResults.append(content2)  # Adding results to myResults list
+    elif(choice == '7'):
+        print('Welcome to the Gobi Desert. The Desert has been reaching deathly temperatures because of the villain, Horay, and his powers include illusions and radiation.')
+    checkDoor()
+    print('''Guess the joke correctly and you\'ll have automatically conqured the villain. Otherwise, you must battle. 
+Would you like to continue? (y or n)''')
+    answer = input()
+    while(answer != 'y' and answer != 'n'):
+        print('That was not an option. Please type \'y\' to proceed with the joke or \'n\'.')
+        answer = input()
+    if(guessJoke() == True):
+        #if they get the answer right, they immediately conquer the villain
+        print('You have destroyed your first villain, without needing to use your powers.')
+    else:
+        #they didn't guess the answer to the joke
+        print('''Oh no. Your failed attempt has angered the villain. They take a threatening stance, directed at you.
+It seems as though you will have to fight them. Your powers are ''' + player.powers[0] + ', ' + player.powers[1] + ', ' + player.powers[2]+ '''.
+Which attack would you like to use?''')
+    break
 
 
 
