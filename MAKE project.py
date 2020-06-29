@@ -61,8 +61,6 @@ def guessJoke():
     response.raise_for_status() # Check for errors
 
     jokeData = json.loads(response.text)
-    #pprint.pprint(jokeData) # Organizes JSON data output #this actually prints all of the data
-
     content = jokeData['setup'] # Pulling only the setup for the joke from the result
     print(content) # Print setup
     myResults.append(content) # Adding results to myResults list
@@ -78,16 +76,15 @@ def guessJoke():
         print('You tried! The real answer was: ' + content2)
         return False
         myResults.append(content2)  # Adding results to myResults list
-    #print(content2)  # Print setup
 
 
 while True:
-    print('''Welcome to Heroes Online, an interactive game where you get to create your own
+    print('''Welcome to World War 2020, an interactive game where you get to create your own
 character based on one of four types of super powers: fire, air, water, and earth.
 What is your name?''')
     name = input()
     print('''Thanks, ''' + name + '''. What type of character would you like to create?
-Fire (f), water (w), earth (e) or air (a)?''')
+Fire (f), Water (w), Earth (e) or Air (a)?''')
     player = hero()
     choice = input()
     while((choice != 'f' and choice != 'w') and (choice != 'e' and choice != 'a')):
@@ -140,7 +137,7 @@ you to decide where to strike first. Here are the options:
     elif(choice == '7'):
         print('Welcome to the Gobi Desert. The Desert has been reaching deathly temperatures because of the villain, Horay, and his powers include illusions and radiation.')
     checkDoor()
-    print('''Guess the joke correctly and you\'ll have automatically conqured the villain. Otherwise, you must battle. 
+    print('''Guess the joke correctly and you\'ll have automatically conquered the villain. Otherwise, you must battle. 
 Would you like to continue? (y or n)''')
     answer = input()
     while(answer != 'y' and answer != 'n'):
