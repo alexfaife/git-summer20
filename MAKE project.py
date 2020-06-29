@@ -45,12 +45,12 @@ def createCharacter(character, type):
     choosePowers(character, choice)
 
 while True:
-    print('''Welcome to Heroes Online, an interactive game where you get to create your own
+    print('''Welcome to World War 2020, an interactive game where you get to create your own
 character based on one of four types of super powers: fire, air, water, and earth.
 What is your name?''')
     name = input()
     print('''Thanks, ''' + name + '''. What type of character would you like to create?
-Fire (f), water (w), earth (e) or air (a)?''')
+Fire (f), Water (w), Earth (e) or Air (a)?''')
     player = hero()
     choice = input()
     while((choice != 'f' and choice != 'w') and (choice != 'e' and choice != 'a')):
