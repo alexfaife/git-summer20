@@ -35,7 +35,7 @@ What is your name?'''
 text2 = '''It\'s your job to meet with the villain...
 They\'ve invited you to their lair...
 And now it\'s time to earn your chance to fight...
-Guess the answer to this joke correctly and you\'ll have automatically conqured the villain. Otherwise, you must battle. 
+Guess the answer to this joke correctly and you\'ll have automatically conquered the villain. Otherwise, you must battle. 
 Would you like to continue? (y or n)'''
 
 #function definitions
@@ -82,7 +82,7 @@ def setType():
     nameButton.grid_remove()
     createCharacter(player, choice)
     e.delete(0, END)
-    top.set('What type of power specialty would you like? Long defence (l) or close defence (c)? ')
+    top.set('What type of power specialty would you like? Long defense (l) or close defense (c)? ')
     typeButton.grid(column= 3, columnspan = 1,row=5)
 
 def setName():
