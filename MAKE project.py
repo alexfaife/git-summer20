@@ -80,7 +80,12 @@ def guessJoke():
         print('You tried! The real answer was: ' + content2)
         return False
         myResults.append(content2)  # Adding results to myResults list
-       
+
+def outputToFile():
+    with open('WW2020.txt', 'a') as f: # Opens file named WW2020 to store myResults
+        with contextlib.redirect_stdout(f): # Redirects myResults into file (WW2020.txt)
+            print(myResults) # Prints/organizes myResults output into file (WW2020.txt)
+            
 def Conclusion():
     print('''Congrats ''' + charName + '''! You saved the world from ''' + villain + ''' with your battling skills.
 We\'re all forever grateful... Come back and fight again!''')
@@ -175,9 +180,12 @@ Would you like to continue? (y or n)''')
         answer = input()
     if(guessJoke() == True):
         #if they get the answer right, they immediately conquer the villain
+        outputToFile()
         print('You have destroyed' + villain +', without needing to use your powers.')
     else:
         #they didn't guess the answer to the joke
+        outputToFile()
+        time.sleep(2)
         print('''Oh no. Your failed attempt has angered '''+villain+'''. They take a threatening stance, directed at you.
 It seems as though you will have to fight them. Your powers are ''' + player.powers[0] + '[1], ' + player.powers[1] + '[2], ' + player.powers[2]+ '[3]'''''. 
 Which attack would you like to use?''')
