@@ -9,7 +9,7 @@ powers = ['mind-control and shape-shifting', 'acid/poison and electricity', 'fli
           'illusions and radiation']
 
 #file to be written in
-file = open("jokes.txt", "w")
+myResults = []
 
 #global var defintions
 name = ''
