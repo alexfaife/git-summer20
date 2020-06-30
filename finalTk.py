@@ -84,7 +84,7 @@ def nameEntry():
     startButton.grid_remove()
     e.delete(0, END)
     top.set('''Thanks, ''' + name + '''. What type of character would you like to create?
-Fire (f), water (w), earth (e) or air (a)?''')
+Fire (f), Water (w), Earth (e) or Air (a)?''')
     nameButton.grid(column= 3, columnspan = 1,row=5)
 
 def setType():
@@ -144,7 +144,7 @@ def villainChosen():
         villain = villain[1]
         powers = powers[1]
         top.set( '''Welcome to Madagascar. Most of the animals & trees in the Rainforest have died because of a villain 
-named ''' + villain + ' for his powers include' +  powers +'.')
+named ''' + villain + ' for his powers include ' +  powers +'.')
     elif (choice == '3'):
         villain = villain[2]
         powers = powers[2]
