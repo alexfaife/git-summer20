@@ -151,6 +151,31 @@ Would you like to continue? (y or n)''')
         print('''Oh no. Your failed attempt has angered the villain. They take a threatening stance, directed at you.
 It seems as though you will have to fight them. Your powers are ''' + player.powers[0] + ', ' + player.powers[1] + ', ' + player.powers[2]+ '''.
 Which attack would you like to use?''')
+    attack = input()
+    if (attack == '1') or (attack == '3'):
+        print('''Oh no! The villain hit you with x power. Remember you only have three lives..
+Your power level lowered by 1. Try another attack! (1, 2, or 3)''')
+        attack2 = input()
+        if attack2 == '1' or '2' or '3':
+            print('''Nice! Their power level went down by 10 points.
+Would you like to choose a different attack (d) or stay with these 3 options (s)?''')
+        next = input()
+        if next == 'd':
+            print('''What type of character would you like to create?
+Fire (f), Water (w), Earth (e) or Air (a)?''')
+            type = input()
+            player = hero()
+            createCharacter(player, choice)
+        if next == 's':
+            print('Your powers are ''' + player.powers[0] + '[1], ' + player.powers[1] + '[2], ' + player.powers[2]+ '[3]''''. 
+Which attack would you like to use?''')
+            attack3 = input()
+            if attack3 == '2':
+                print('Nice! You lowered their power level. Hit them again? (y or n)')
+
+    if (attack == '2'):
+        print('Good choice.. The villain took the hit.. Try another attack to finish him off!')
+
     break
 
 
