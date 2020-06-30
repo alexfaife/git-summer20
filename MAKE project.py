@@ -182,7 +182,7 @@ Which attack would you like to use?''')
 Your power level lowered by 1. Try another attack! (1, 2, or 3)''')
         attack2 = input()
         if attack2 == '1' or '2' or '3':
-            print('''Nice!''' + villain + '''\'s power level went down by 10 points.
+            print('''Nice! ''' + villain + '''\'s power level went down by 10 points.
 Would you like to choose a different attack (d) or stay with these 3 options (s)?''')
         next = input()
         if next == 'd':
