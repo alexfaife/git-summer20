@@ -7,8 +7,8 @@ powers = ['mind-control and shape-shifting', 'acid/poison and electricity', 'fli
           'superstrength and energy', 'forcefields and invisibility', 'gravity and super-intelligence',
           'illusions and radiation']
 
-#file to be written in
-file = open("jokes.txt", "w")
+# results to put in file 
+myResults = []
 
 #global var defintions
 counter = 1
@@ -162,6 +162,11 @@ include ''' + powers +'''.''')
     jokeQButton.grid(column= 3, columnspan = 1,row=5)
     e.grid_remove()
 
+def outputToFile():
+    with open('WW2020.txt', 'a') as f: # Opens file named WW2020 to store myResults
+        with contextlib.redirect_stdout(f): # Redirects myResults into file (WW2020.txt)
+            print(myResults) # Prints/organizes myResults output into file (WW2020.txt)
+
 def jokeQ():
     global choice
     jokeQButton.grid_remove()
@@ -188,10 +193,10 @@ def jokeSetUp():
 
         content = jokeData['setup']
         top.set('Here is the joke, give it your best guess: ' + content) #show the joke set up
-        file.write('The joke is: ' + content)  # Adding results to myResults list
+        myResults.append('The joke is:' + content) # Adding results to myResults list
 
         content2 = jokeData['punchline']  # Pulling only the setup for the joke from the result
-        file.write('The punchline is: ' + content2)  # Adding results to myResults list
+        myResults.append('The punchline is:' + content2) # Adding results to myResults list  # Adding results to myResults list
         jokeAButton.grid(column=3, columnspan=1, row=5)
     if choice == 'n':
         noJoke()
