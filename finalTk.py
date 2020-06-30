@@ -142,7 +142,7 @@ named ''' + villain + ' for his powers include' +  powers +'.')
     elif (choice == '4'):
         villain = villain[3]
         powers = powers[3]
-        top.set('''Welcome to Argentina. The Glacier has almost melted away because of the villain,''' + villain+ ''', and her
+        top.set('''Welcome to Argentina. The Glacier has almost melted away because of the villain, ''' + villain+ ''', and her
 powers include ''' + powers + '.')
     elif (choice == '5'):
         villain = villain[4]
@@ -173,7 +173,7 @@ def jokeQ():
     top.set('''It\'s your job to meet with the villain...
 They\'ve invited you to their lair...
 And now it\'s time to earn your chance to fight...
-Guess the answer to this joke correctly and you\'ll have automatically conqured ''' + villain +'''. Otherwise, you must battle. 
+Guess the answer to this joke correctly and you\'ll have automatically conquered ''' + villain +'''. Otherwise, you must battle. 
 Would you like to continue? (y or n)''')
     e.grid(column=2, columnspan=2, row=4)
     jokeButton.grid(column= 3, columnspan = 1,row=5)
