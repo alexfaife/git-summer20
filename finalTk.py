@@ -3,7 +3,7 @@ from PIL import ImageTk, Image
 import random
 import time
 import requests, json, sys, pprint, contextlib
-villain = ['Alastor', 'Odon', 'Zilla', 'Kasdeva', 'Thamish', 'Daegal', 'Horay' ]
+villains = ['Alastor', 'Odon', 'Zilla', 'Kasdeva', 'Thamish', 'Daegal', 'Horay' ]
 powers = ['mind-control and shape-shifting', 'acid/poison and electricity', 'flight and speed',
           'superstrength and energy', 'forcefields and invisibility', 'gravity and super-intelligence',
           'illusions and radiation']
@@ -17,6 +17,7 @@ choice = ''
 charName = ''
 content2 =''
 villainHealth = 100
+villain = ''
 
 #class definition for hero
 class hero:
@@ -59,12 +60,16 @@ def choosePowers(character, style):
 def createCharacter(character, type):
     if(type == 'f'):
         character.type = 'fire'
+        panel1.grid(row = 4, column = 0)
     elif(type == 'w'):
         character.type = 'water'
+        panel2.grid(row = 4, column = 0)
     elif(type == 'e'):
         character.type = 'earth'
+        panel4.grid(row = 4, column = 0)
     else:
         character.type = 'air'
+        panel3.grid(row = 4, column = 0)
     choosePowers(character, choice)
 
 def nameEntry():
@@ -131,51 +136,69 @@ you to decide where to strike first. Here are the options:
 
 def villainChosen():
     global choice
-    global villain
+    global villains
     global powers
+    global villain
     choice = e.get()
     e.delete(0, END)
     villainButton.grid_forget()
+    #get rid of images of characters
+    if (player.type == 'fire'):
+        panel1.grid_remove()
+    elif (player.type == 'water'):
+        panel2.grid_remove()
+    elif (player.type == 'earth'):
+        panel4.grid_remove()
+    else:
+        panel3.grid_remove()
+
     if choice != '1' and choice != '2' and choice != '3' and choice != '4' and choice != '5' and choice != '6' and choice != '7':
         e.delete(0, END)
         top.set('That was not an option. Please enter a number 1 through 7 to select your villain location.')
         villainButton.grid(column=0, row=3)
     else:
         if (choice == '1'):
-            villain = villain[0]
+            villain = villains[0]
             powers = powers[0]
             top.set('''Welcome to Sydney. The beach has been destroyed by a villain, named '''+ villain+
 ''', who\'s primary powers are ''' + powers + ''''.''')
+            vil1.grid(row=4, column=0)
         elif (choice == '2'):
-            villain = villain[1]
+            villain = villains[1]
             powers = powers[1]
             top.set( '''Welcome to Madagascar. Most of the animals & trees in the Rainforest have died because of a villain 
 named ''' + villain + ' for his powers include' +  powers +'.')
+            vil2.grid(row=4, column=0)
         elif (choice == '3'):
-            villain = villain[2]
+            villain = villains[2]
             powers = powers[2]
             top.set('''Welcome to Senegal. The port has been transformed into the villain, ''' + villain + '''\'s lair, 
 and his powers include ''' +powers + '.')
+            vil3.grid(row=4, column=0)
         elif (choice == '4'):
-            villain = villain[3]
+            villain = villains[3]
             powers = powers[3]
             top.set('''Welcome to Argentina. The Glacier has almost melted away because of the villain,''' + villain+ ''', and her
 powers include ''' + powers + '.')
+            vil4.grid(row = 4, column = 0)
         elif (choice == '5'):
-            villain = villain[4]
+            villain = villains[4]
             powers = powers[4]
             top.set('''Welcome to Paris. The Eifel Tower is one of the last monuments left standing in Paris because of the 
 villain,''' + villain + ''' and his powers include ''' + powers + '.')
+            vil5.grid(row=4, column=0)
         elif (choice == '6'):
-            villain = villain[5]
+            villain = villains[5]
             powers = powers[5]
             top.set('''Welcome to Ecuador. The islands have almost diminished because of the villain,''' + villain + ''', and his powers 
 include ''' + powers +'''.''')
+            vil6.grid(row=4, column=0)
         elif (choice == '7'):
-            villain = villain[6]
+            villain = villains[6]
             powers = powers[6]
             top.set('''Welcome to the Gobi Desert. The Desert has been reaching deathly temperatures because of the villain,''' + villain +
 ''' and his powers include ''' +  powers +'''.''')
+            vil7.grid(row=4, column=0)
         jokeQButton.grid(column= 0,row=3)
         e.grid_forget()
 
@@ -221,6 +244,7 @@ def jokeSetUp():
 
 def jokeAnswer():
     global choice
+    global villain
     choice = e.get()
     jokeAButton.grid_forget()
     e.delete(0, END)
@@ -248,6 +272,24 @@ Which attack would you like to use?''')
     secondAttackButton.grid(column=1, padx=50, pady=50, row=3)
     thirdAttackButton.grid(column=2, padx=50, pady=50, row=3)
 
+def removeVillain():
+    global villain
+    global villains
+    if villain == villains[0]:
+        vil1.grid_remove()
+    elif villain == villains[1]:
+        vil2.grid_remove()
+    elif villain == villains[2]:
+        vil3.grid_remove()
+    elif villain == villains[3]:
+        vil4.grid_remove()
+    elif villain == villains[4]:
+        vil5.grid_remove()
+    elif villain == villains[5]:
+        vil6.grid_remove()
+    elif villain == villains[6]:
+        vil7.grid_remove()
+
 def attack(level):
     global villainHealth
     e.grid_forget()
@@ -256,12 +298,14 @@ def attack(level):
     if villainHealth <= 0:
         top.set('You have defeated ' + villain + '''. You are a hero in your land and will surely be called on to 
 do more missions. Would you like to play again or quit?''')
+        removeVillain()
         firstAttackButton.grid_forget()
         secondAttackButton.grid_forget()
         thirdAttackButton.grid_forget()
         again.grid(column=0, padx=50, pady=50, row=3)
         quitGame.grid(column=2, padx=50, pady=50, row=3)
     elif player.health <= 0:
+        removeVillain()
         top.set('You were defeated by ' + villain + '''. You are sent back to HQ to heal up but will not be invited
 on another mission. Would you like to play again or quit?''')
         firstAttackButton.grid_forget()
@@ -298,12 +342,11 @@ def playAgain():
 #window settings
 root = Tk()
 root.title("Gameplay Manager")
-width = root.winfo_screenwidth() // 2
-height = root.winfo_screenheight() // 2
-x = width - (height // 2)
-y = height - (width // 2)
+width = root.winfo_screenwidth() -400
+height = root.winfo_screenheight() -200
+x = 200
 #edit height and width to change size of window
-root.geometry('{}x{}+{}+{}'.format(width,height, x, y))
+root.geometry('{}x{}+{}+{}'.format(width,height, x, 0))
 
 #this is the title
 title = Label(root, text= 'World War 2020',font = 'fixedsys 20 bold', fg = 'darkblue' )
@@ -323,15 +366,15 @@ e.grid(column =0, row=2)
 player = hero()
 
 #this is the
-startButton = Button(root, text ='Enter1', command = nameEntry, fg = 'blue')
+startButton = Button(root, text ='Enter', command = nameEntry, fg = 'blue')
 startButton.grid(row=3, column= 0)
-nameButton = Button(root, text='Enter2', command=setType, fg='blue')
-typeButton = Button(root, text='Enter3', command = setName, fg='blue')
-gameBegins = Button(root, text='Enter4', command = gamePlay, fg='blue')
-villainButton = Button(root, text='Enter5', command = villainChosen, fg='blue')
+nameButton = Button(root, text='Enter', command=setType, fg='blue')
+typeButton = Button(root, text='Enter', command = setName, fg='blue')
+gameBegins = Button(root, text='Enter', command = gamePlay, fg='blue')
+villainButton = Button(root, text='Enter', command = villainChosen, fg='blue')
 jokeQButton = Button(root, text='Continue', command = jokeQ, fg='blue')
-jokeButton = Button(root, text='Enter6', command = jokeSetUp, fg='blue')
-jokeAButton =  Button(root, text='Enter7', command = jokeAnswer, fg='blue')
+jokeButton = Button(root, text='Enter', command = jokeSetUp, fg='blue')
+jokeAButton =  Button(root, text='Enter', command = jokeAnswer, fg='blue')
 firstAttackButton = Button(root, text= 'attack 1', command= lambda: attack(player.powerLevel[0]), fg='blue')
 secondAttackButton = Button(root, text= 'attack 2', command= lambda: attack(player.powerLevel[1]), fg='blue')
 thirdAttackButton = Button(root, text= 'attack 3', command= lambda: attack(player.powerLevel[2]), fg='blue')
