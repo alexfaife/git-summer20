@@ -2,6 +2,7 @@ import random
 import time
 import requests, json, sys, pprint, contextlib
 myResults = [] # Empty myResults list to begin
+villain = ['Alastor', 'Odon', 'Zilla', 'Kasdeva', 'Thamish', 'Daegal', 'Horay']
 
 class hero:
     def __init__(self):
@@ -123,19 +124,19 @@ you to decide where to strike first. Here are the options:
            6.) Santa Cruz Islanda, Galapagos, Ecuador
            7.) The Gobi Desert, Southern Mongolia''')
     if(choice == '1'):
-        print('Welcome to Sydney. The beach has been destroyed by a villain, named Alastor, who\'s primary powers are mind-control and shape-shifting.')
+        print('Welcome to Sydney. The beach has been destroyed by a villain, named '+ villain[0] + ', who\'s primary powers are mind-control and shape-shifting.')
     elif(choice == '2'):
-        print('Welcome to Madagascar. Most of the animals & trees in the Rainforest have died because of a villain named Odon, for his powers include acid/poison and electricity')
+        print('Welcome to Madagascar. Most of the animals & trees in the Rainforest have died because of a villain named '+ villain[1]+ ', for his powers include acid/poison and electricity')
     elif(choice == '3'):
-        print('Welcome to Senegal. The port has been transformed into the villain, Zilla\'s lair, and his powers include flight and speed.')
+        print('Welcome to Senegal. The port has been transformed into the villain, ' + villain[2]+ '\'s  lair, and his powers include flight and speed.')
     elif(choice == '4'):
-        print('Welcome to Argentina. The Glacier has almost melted away because of the villain, Kasdeya, and her powers include superstrength and energy.')
+        print('Welcome to Argentina. The Glacier has almost melted away because of the villain, '+ villain[3]+ ', and her powers include superstrength and energy.')
     elif(choice == '5'):
-        print('Welcome to Paris. The Eifel Tower is one of the last monuments left standing in Paris because of the villain, Thamish, and his powers include forcefields and invisibility.')
+        print('Welcome to Paris. The Eifel Tower is one of the last monuments left standing in Paris because of the villain, '+ villain[4]+', and his powers include forcefields and invisibility.')
     elif(choice == '6'):
-        print('Welcome to Ecuador. The islands have almost diminished because of the villain, Daegal, and his powers include gravity and super-intelligence,')
+        print('Welcome to Ecuador. The islands have almost diminished because of the villain, '+ villain[5]+', and his powers include gravity and super-intelligence,')
     elif(choice == '7'):
-        print('Welcome to the Gobi Desert. The Desert has been reaching deathly temperatures because of the villain, Horay, and his powers include illusions and radiation.')
+        print('Welcome to the Gobi Desert. The Desert has been reaching deathly temperatures because of the villain, '+ villain[6]+', and his powers include illusions and radiation.')
     checkDoor()
     print('''Guess the joke correctly and you\'ll have automatically conquered the villain. Otherwise, you must battle. 
 Would you like to continue? (y or n)''')
