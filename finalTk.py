@@ -9,7 +9,7 @@ powers = ['mind-control and shape-shifting', 'acid/poison and electricity', 'fli
           'illusions and radiation']
 
 #file to be written in
-myResults = []
+file = open("jokes.txt", "w")
 
 #global var defintions
 name = ''
@@ -36,7 +36,7 @@ What is your name?'''
 text2 = '''It\'s your job to meet with the villain...
 They\'ve invited you to their lair...
 And now it\'s time to earn your chance to fight...
-Guess the answer to this joke correctly and you\'ll have automatically conquered the villain. Otherwise, you must battle. 
+Guess the answer to this joke correctly and you\'ll have automatically conqured the villain. Otherwise, you must battle. 
 Would you like to continue? (y or n)'''
 
 #function definitions
@@ -178,35 +178,30 @@ and his powers include ''' +powers + '.')
         elif (choice == '4'):
             villain = villains[3]
             powers = powers[3]
-            top.set('''Welcome to Argentina. The Glacier has almost melted away because of the villain, ''' + villain+ ''', and her
+            top.set('''Welcome to Argentina. The Glacier has almost melted away because of the villain,''' + villain+ ''', and her
 powers include ''' + powers + '.')
             vil4.grid(row = 4, column = 0)
         elif (choice == '5'):
             villain = villains[4]
             powers = powers[4]
             top.set('''Welcome to Paris. The Eifel Tower is one of the last monuments left standing in Paris because of the 
-villain, ''' + villain + ''' and his powers include ''' + powers + '.')
+villain,''' + villain + ''' and his powers include ''' + powers + '.')
             vil5.grid(row=4, column=0)
         elif (choice == '6'):
             villain = villains[5]
             powers = powers[5]
-            top.set('''Welcome to Ecuador. The islands have almost diminished because of the villain, ''' + villain + ''', and his powers 
+            top.set('''Welcome to Ecuador. The islands have almost diminished because of the villain,''' + villain + ''', and his powers 
 include ''' + powers +'''.''')
             vil6.grid(row=4, column=0)
         elif (choice == '7'):
             villain = villains[6]
             powers = powers[6]
-            top.set('''Welcome to the Gobi Desert. The Desert has been reaching deathly temperatures because of the villain, ''' + villain +
+            top.set('''Welcome to the Gobi Desert. The Desert has been reaching deathly temperatures because of the villain,''' + villain +
 ''' and his powers include ''' +  powers +'''.''')
             vil7.grid(row=4, column=0)
         jokeQButton.grid(column= 0,row=3)
         e.grid_forget()
 
-def outputToFile():
-    with open('WW2020.txt', 'a') as f: # Opens file named WW2020 to store myResults
-        with contextlib.redirect_stdout(f): # Redirects myResults into file (WW2020.txt)
-            print(myResults) # Prints/organizes myResults output into file (WW2020.txt)
-                    
 def jokeQ():
     global choice
     jokeQButton.grid_forget()
@@ -238,12 +233,10 @@ def jokeSetUp():
 
             content = jokeData['setup']
             top.set('Here is the joke, give it your best guess: ' + content) #show the joke set up
-            print(content) # Print setup
-            myResults.append(content) # Adding results to myResults list
+            file.write('The joke is: ' + content)  # Adding results to myResults list
 
             content2 = jokeData['punchline']  # Pulling only the setup for the joke from the result
-            print(content2)  # Print setup
-            myResults.append(content2)  # Adding results to myResults list  # Adding results to myResults list
+            file.write('The punchline is: ' + content2)  # Adding results to myResults list
             jokeAButton.grid(column=0, row=3)
         if choice == 'n':
             noJoke()
@@ -424,3 +417,4 @@ horayImage = ImageTk.PhotoImage(Image.open("horay.gif"))
 vil7 = Label(root, image= horayImage)
 
 root.mainloop()
+
