@@ -338,4 +338,39 @@ thirdAttackButton = Button(root, text= 'attack 3', command= lambda: attack(playe
 quitGame = Button(root, text= 'Quit', command= endGame, fg = 'red')
 again = Button(root, text= 'Play Again', command= playAgain, fg = 'green')
 
+#this is the images
+fireImage = ImageTk.PhotoImage(Image.open("fire.gif"))
+panel1 = Label(root, image= fireImage)
+#panel1.grid(row = 4, column = 0)
+
+waterImage = ImageTk.PhotoImage(Image.open("water.gif"))
+panel2 = Label(root, image= waterImage)
+
+airImage = ImageTk.PhotoImage(Image.open("air.gif"))
+panel3 = Label(root, image= airImage)
+
+earthImage = ImageTk.PhotoImage(Image.open("earth.gif"))
+panel4 = Label(root, image= earthImage)
+
+alastorImage = ImageTk.PhotoImage(Image.open("alastor.gif"))
+vil1 = Label(root, image= alastorImage)
+
+odonImage = ImageTk.PhotoImage(Image.open("odon.gif"))
+vil2 = Label(root, image= odonImage)
+
+zillaImage = ImageTk.PhotoImage(Image.open("zilla.gif"))
+vil3 = Label(root, image= zillaImage)
+
+kasdevaImage = ImageTk.PhotoImage(Image.open("kasdeva.gif"))
+vil4 = Label(root, image= kasdevaImage)
+
+thamishImage = ImageTk.PhotoImage(Image.open("thamish.gif"))
+vil5 = Label(root, image= thamishImage)
+
+daegalImage = ImageTk.PhotoImage(Image.open("daegal.gif"))
+vil6 = Label(root, image= daegalImage)
+
+horayImage = ImageTk.PhotoImage(Image.open("horay.gif"))
+vil7 = Label(root, image= horayImage)
+
 root.mainloop()
