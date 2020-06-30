@@ -80,6 +80,11 @@ def guessJoke():
         print('You tried! The real answer was: ' + content2)
         return False
         myResults.append(content2)  # Adding results to myResults list
+       
+def Conclusion():
+    print('''Congrats ''' + charName + '''! You saved the world from ''' + villain + ''' with your battling skills.
+We\'re all forever grateful... Come back and fight again!''')
+    
 
 
 while True:
@@ -200,6 +205,7 @@ Which attack would you like to use?''')
 
     if (attack == '2'):
         print('Good choice.. ' + villain +' took the hit.. Try another attack to finish him off!')
+    Conclusion()
 
     break
 
