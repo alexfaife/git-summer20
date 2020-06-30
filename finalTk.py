@@ -240,7 +240,7 @@ do more missions. Would you like to play again or quit?''')
         again.grid(column=2, padx=50, pady=50, columnspan=1, row=5)
         quitGame.grid(column=4, padx=50, pady=50, columnspan=1, row=5)
     else:
-        top.set('Nice! You\'ve hit ' + villain + 'with a power level of ' + str(level) + ' and their health is now ' + str(villainHealth) + '''.
+        top.set('Nice! You\'ve hit ' + villain + ' with a power level of ' + str(level) + ' and their health is now ' + str(villainHealth) + '''.
 They hit you back with their strongest attack. You are only able to take 3 hits, so only two more. 
 Which attack would you like to use now?''')
 
