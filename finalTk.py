@@ -178,30 +178,35 @@ and his powers include ''' +powers + '.')
         elif (choice == '4'):
             villain = villains[3]
             powers = powers[3]
-            top.set('''Welcome to Argentina. The Glacier has almost melted away because of the villain,''' + villain+ ''', and her
+            top.set('''Welcome to Argentina. The Glacier has almost melted away because of the villain, ''' + villain+ ''', and her
 powers include ''' + powers + '.')
             vil4.grid(row = 4, column = 0)
         elif (choice == '5'):
             villain = villains[4]
             powers = powers[4]
             top.set('''Welcome to Paris. The Eifel Tower is one of the last monuments left standing in Paris because of the 
-villain,''' + villain + ''' and his powers include ''' + powers + '.')
+villain, ''' + villain + ''' and his powers include ''' + powers + '.')
             vil5.grid(row=4, column=0)
         elif (choice == '6'):
             villain = villains[5]
             powers = powers[5]
-            top.set('''Welcome to Ecuador. The islands have almost diminished because of the villain,''' + villain + ''', and his powers 
+            top.set('''Welcome to Ecuador. The islands have almost diminished because of the villain, ''' + villain + ''', and his powers 
 include ''' + powers +'''.''')
             vil6.grid(row=4, column=0)
         elif (choice == '7'):
             villain = villains[6]
             powers = powers[6]
-            top.set('''Welcome to the Gobi Desert. The Desert has been reaching deathly temperatures because of the villain,''' + villain +
+            top.set('''Welcome to the Gobi Desert. The Desert has been reaching deathly temperatures because of the villain, ''' + villain +
 ''' and his powers include ''' +  powers +'''.''')
             vil7.grid(row=4, column=0)
         jokeQButton.grid(column= 0,row=3)
         e.grid_forget()
 
+def outputToFile():
+    with open('WW2020.txt', 'a') as f: # Opens file named WW2020 to store myResults
+        with contextlib.redirect_stdout(f): # Redirects myResults into file (WW2020.txt)
+            print(myResults) # Prints/organizes myResults output into file (WW2020.txt)
+                    
 def jokeQ():
     global choice
     jokeQButton.grid_forget()
@@ -233,10 +238,12 @@ def jokeSetUp():
 
             content = jokeData['setup']
             top.set('Here is the joke, give it your best guess: ' + content) #show the joke set up
-            file.write('The joke is: ' + content)  # Adding results to myResults list
+            print(content) # Print setup
+            myResults.append(content) # Adding results to myResults list
 
             content2 = jokeData['punchline']  # Pulling only the setup for the joke from the result
-            file.write('The punchline is: ' + content2)  # Adding results to myResults list
+            print(content2)  # Print setup
+            myResults.append(content2)  # Adding results to myResults list  # Adding results to myResults list
             jokeAButton.grid(column=0, row=3)
         if choice == 'n':
             noJoke()
