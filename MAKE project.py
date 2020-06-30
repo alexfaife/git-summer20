@@ -2,6 +2,7 @@ import random
 import time
 import requests, json, sys, pprint, contextlib
 myResults = [] # Empty myResults list to begin
+global villain
 villain = ['Alastor', 'Odon', 'Zilla', 'Kasdeva', 'Thamish', 'Daegal', 'Horay']
 
 class hero:
@@ -124,21 +125,28 @@ you to decide where to strike first. Here are the options:
            6.) Santa Cruz Islanda, Galapagos, Ecuador
            7.) The Gobi Desert, Southern Mongolia''')
     if(choice == '1'):
-        print('Welcome to Sydney. The beach has been destroyed by a villain, named '+ villain[0] + ', who\'s primary powers are mind-control and shape-shifting.')
+        villain = villain[0]
+        print('Welcome to Sydney. The beach has been destroyed by a villain, named '+ villain+ ', who\'s primary powers are mind-control and shape-shifting.')
     elif(choice == '2'):
-        print('Welcome to Madagascar. Most of the animals & trees in the Rainforest have died because of a villain named '+ villain[1]+ ', for his powers include acid/poison and electricity')
+        villain = villain[1]
+        print('Welcome to Madagascar. Most of the animals & trees in the Rainforest have died because of a villain named '+ villain+ ', for his powers include acid/poison and electricity')
     elif(choice == '3'):
-        print('Welcome to Senegal. The port has been transformed into the villain, ' + villain[2]+ '\'s  lair, and his powers include flight and speed.')
+        villain = villain[2]
+        print('Welcome to Senegal. The port has been transformed into the villain, ' + villain+ '\'s lair, and his powers include flight and speed.')
     elif(choice == '4'):
-        print('Welcome to Argentina. The Glacier has almost melted away because of the villain, '+ villain[3]+ ', and her powers include superstrength and energy.')
+        villain = villain[3]
+        print('Welcome to Argentina. The Glacier has almost melted away because of the villain, '+ villain+ ', and her powers include superstrength and energy.')
     elif(choice == '5'):
-        print('Welcome to Paris. The Eifel Tower is one of the last monuments left standing in Paris because of the villain, '+ villain[4]+', and his powers include forcefields and invisibility.')
+        villain = villain[4]
+        print('Welcome to Paris. The Eifel Tower is one of the last monuments left standing in Paris because of the villain, '+ villain+', and his powers include forcefields and invisibility.')
     elif(choice == '6'):
-        print('Welcome to Ecuador. The islands have almost diminished because of the villain, '+ villain[5]+', and his powers include gravity and super-intelligence,')
+        villain = villain[5]
+        print('Welcome to Ecuador. The islands have almost diminished because of the villain, '+ villain+', and his powers include gravity and super-intelligence,')
     elif(choice == '7'):
-        print('Welcome to the Gobi Desert. The Desert has been reaching deathly temperatures because of the villain, '+ villain[6]+', and his powers include illusions and radiation.')
+        villain = villain[6]
+        print('Welcome to the Gobi Desert. The Desert has been reaching deathly temperatures because of the villain, '+ villain+', and his powers include illusions and radiation.')
     checkDoor()
-    print('''Guess the joke correctly and you\'ll have automatically conquered the villain. Otherwise, you must battle. 
+    print('''Guess the joke correctly and you\'ll have automatically conquered ''' + villain +'''. Otherwise, you must battle. 
 Would you like to continue? (y or n)''')
     answer = input()
     while(answer != 'y' and answer != 'n'):
@@ -146,19 +154,19 @@ Would you like to continue? (y or n)''')
         answer = input()
     if(guessJoke() == True):
         #if they get the answer right, they immediately conquer the villain
-        print('You have destroyed your first villain, without needing to use your powers.')
+        print('You have destroyed' + villain +', without needing to use your powers.')
     else:
         #they didn't guess the answer to the joke
-        print('''Oh no. Your failed attempt has angered the villain. They take a threatening stance, directed at you.
-It seems as though you will have to fight them. Your powers are ''' + player.powers[0] + ', ' + player.powers[1] + ', ' + player.powers[2]+ '''.
+        print('''Oh no. Your failed attempt has angered '''+villain+'''. They take a threatening stance, directed at you.
+It seems as though you will have to fight them. Your powers are ''' + player.powers[0] + '[1], ' + player.powers[1] + '[2], ' + player.powers[2]+ '[3]'''''. 
 Which attack would you like to use?''')
     attack = input()
     if (attack == '1') or (attack == '3'):
-        print('''Oh no! The villain hit you with x power. Remember you only have three lives..
+        print('''Oh no! '''+villain+ ''' hit you with x power. Remember you only have three lives..
 Your power level lowered by 1. Try another attack! (1, 2, or 3)''')
         attack2 = input()
         if attack2 == '1' or '2' or '3':
-            print('''Nice! Their power level went down by 10 points.
+            print('''Nice!''' + villain + '''\'s power level went down by 10 points.
 Would you like to choose a different attack (d) or stay with these 3 options (s)?''')
         next = input()
         if next == 'd':
@@ -172,10 +180,10 @@ Fire (f), Water (w), Earth (e) or Air (a)?''')
 Which attack would you like to use?''')
             attack3 = input()
             if attack3 == '2':
-                print('Nice! You lowered their power level. Hit them again? (y or n)')
+                print('Nice! You lowered' +villain+ '\'s power level. Hit them again? (y or n)')
 
     if (attack == '2'):
-        print('Good choice.. The villain took the hit.. Try another attack to finish him off!')
+        print('Good choice.. ' + villain +' took the hit.. Try another attack to finish him off!')
 
     break
 
